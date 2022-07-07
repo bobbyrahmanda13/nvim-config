@@ -1,4 +1,5 @@
 local lsp_installer  = require "nvim-lsp-installer"
+local lspconfig = require("lspconfig")
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
 --vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
@@ -16,6 +17,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -71,6 +73,9 @@ local servers = {
   "bashls",
   
 }
+
+lspconfig.volar.setup{ on_attach = on_attach }
+
 
 for _, name in pairs(servers) do
   local server_is_found, server = lsp_installer.get_server(name)

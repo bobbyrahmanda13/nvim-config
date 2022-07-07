@@ -21,6 +21,9 @@ require('lualine').setup{
 }
 -- notify plugin
 vim.notify=require("notify")
+vim.notify.setup({
+background_colour = "#000000",
+})
 -- comment plugin
 require('Comment').setup()
 
@@ -42,13 +45,27 @@ on_attach = function(client, bufnr)
                 buffer = bufnr,
                 callback = function()
                     -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                    vim.lsp.buf.format({ bufnr = bufnr })
+                   vim.lsp.buf.format({ bufnr = bufnr })
                    -- vim.lsp.buf.formatting_sync()
                 end,
             })
         end
     end,
-    
 })
+
+local on_attach = function(client, bufnr)
+    if client.name == "html" then                                                                                                   
+        client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+    end
+    if client.name == "tsserver" then                                                                                                   
+        client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+    end
+     if client.name == "volar" then                                                                                                   
+        client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+    end
+    
+    -- rest of the initialization
+end
+
 -- null-ls plugin end
 

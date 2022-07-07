@@ -27,7 +27,7 @@ set.splitright=true
 set.fileencoding='utf-8'
 set.termguicolors=true
 
-set.relativenumber=true
+set.relativenumber=false
 set.cursorline=true
 set.hidden=true
 set.number=true

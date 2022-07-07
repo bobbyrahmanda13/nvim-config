@@ -30,14 +30,13 @@ require'nvim-treesitter.configs'.setup {
       -- Set to false if you have an `updatetime` of ~100.
       clear_on_cursor_move = true,
     },
-  },
-  smart_rename = {
+      smart_rename = {
       enable = true,
       keymaps = {
         smart_rename = "grr",
       },
     },
-  navigation = {
+    navigation = {
       enable = true,
       keymaps = {
         goto_definition = "gnd",
@@ -47,4 +46,7 @@ require'nvim-treesitter.configs'.setup {
         goto_previous_usage = "<a-#>",
       },
     },
+  },
+
+  
 }
