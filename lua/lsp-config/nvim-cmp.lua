@@ -1,6 +1,11 @@
 -- luasnip setup
 local luasnip = require 'luasnip'
 local lspkind = require 'lspkind'
+
+require('luasnip.loaders.from_vscode').lazy_load()
+luasnip.filetype_extend("all", { "_" })
+
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
@@ -9,14 +14,15 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  window = {
+     --completion = cmp.config.window.bordered(),
+     --documentation = cmp.config.window.bordered(),
+    },
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()

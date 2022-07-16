@@ -20,6 +20,8 @@ use 'rcarriga/nvim-notify'
 use 'romgrk/barbar.nvim'
 use 'numToStr/Comment.nvim'
 use 'jose-elias-alvarez/null-ls.nvim'
+use 'rafamadriz/friendly-snippets'
+use 'honza/vim-snippets'
 end)
 
 
